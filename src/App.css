@@ -28,6 +28,44 @@
   color: #61dafb;
 }
 
+.background {
+  background-color: rgb(226, 210, 236, 0.5);
+  padding: 20px;
+  text-align: center;
+  font-family: 'East Sea Dokdo';
+}
+
+.font-background {
+  background-color: rgb(161, 126, 184, 0.2);
+  font-size: 50px;
+  padding: 5px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  text-shadow: 3px 3px #2d64a797;
+  margin: 0;
+  text-decoration: underline;
+  text-decoration-color: rgba(36, 67, 71, 0.486);
+}
+
+.list-background {
+  font-size: 25px;
+  margin: 0;
+  text-decoration: underline;
+  text-decoration-color: rgba(18, 33, 35, 0.28);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap');
+
+.input {
+  width: 300px;
+  height: 20px;
+  font-size: 20px;
+  border-radius: 50px;
+  border: 0;
+  font-family: 'East Sea Dokdo';
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -35,4 +73,19 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.btn{
+  background-color: #F5B3FF;
+  border: none;
+  color: white;
+  padding: 15px 15px;
+  text-align: center;
+  font-size: 16px;
+}
+.btn:hover{
+  background-color: #f084fe92; 
+}
+.btn:active{
+  background-color: #B693BF; 
 }

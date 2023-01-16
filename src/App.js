@@ -50,21 +50,21 @@ function App() {
   }
 
   return (
-    <div>
-      <div style={{backgroundColor:"lightblue"}}>
-        <h1>TodoList</h1>
+    <div className='background'>
+      <div>
+        <h1 className='font-background'>Things to do</h1>
       </div>
       <hr/>
       <div>
-        <input value={list} placeholder="할 일을 입력하세요" onChange={(e)=>{setList(e.target.value)}}/>
-        <button onClick={()=>{makelists()}}>+</button>
+        <input className='input' value={list} placeholder="할 일을 입력하세요" onChange={(e)=>{setList(e.target.value)}}/>
+        <button className='btn' onClick={()=>{makelists()}}>+</button>
       </div>
       <hr/>
       {makelist.map((value, index)=>{
         return(
           <div>
             <input type="checkbox" onClick={(e)=>{checkboxfunc(e, index)}}/>
-            {value}
+            <span className='list-background'>{value}</span>
             <button onClick={()=>{fixlists(index)}}>수정</button>
             <button onClick={()=>{deletelists(index)}}>-</button>
           </div>
