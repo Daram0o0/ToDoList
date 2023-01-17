@@ -12,7 +12,7 @@
 //         - 태그시스템
 //         - 스크롤
 //         - 현재날짜 우측 상단(?)
-//         - 
+//         - 할일 퍼센트 옆으로 스크롤
 // 요구조건 :
 //     - Git 허브 사용하기 하루 3~5커밋 해보도록 노력할것!
 
@@ -24,6 +24,8 @@ import {useState} from 'react';
 function App() {
   const [list, setList] = useState();
   const [makelist, setMakelist] = useState([]);
+  const [ischecked, setIschecked] = useState(false);
+  const [endlist, setEndlist] = useState([]);
 
   function makelists() {
     setMakelist([...makelist, list]);
@@ -45,11 +47,25 @@ function App() {
 
   function checkboxfunc(e, index) {
     if(e.target.checked == true){
-      makelist[index].style.color = "red";
-      console.log(true);
+      let temp = [...makelist];
+      let temp2 = temp.splice(index, 1);
+      setMakelist(temp);
+      setEndlist([...endlist,temp2]);
+      setIschecked(false);
+      console.log(e.target.checked);
     }
     else {
-      console.log(false);
+      setIschecked(true);
+      console.log(e.target.checked);
+    }
+  }
+
+  function sliderfunc(e,index) {
+    if (e.target.value == 100) {
+      let temp = [...makelist];
+      let temp2 = temp.splice(index, 1);
+      setMakelist(temp);
+      setEndlist([...endlist,temp2]);
     }
   }
 
@@ -64,18 +80,25 @@ function App() {
         <button className='btn' onClick={()=>{makelists()}}>+</button>
       </div>
       <hr/>
-      <div >
       {makelist.map((value, index)=>{
         return(
           <div className='scroll'>
-            <input type="checkbox" onClick={(e)=>{checkboxfunc(e, index)}}/>
-            <span className='list-background'>{value}</span>
-            <button type="button" onClick={()=>{fixlists(index)}}><img src="https://cdn-icons-png.flaticon.com/512/1301/1301727.png" width="20px" height="20px"/></button>
+            <input type="checkbox" value={ischecked} onClick={(e)=>{checkboxfunc(e, index)}}/>
+            <span className='list-background'>{value}</span>{" "}
+            <button type="button" onClick={()=>{fixlists(index)}}><img src="https://cdn-icons-png.flaticon.com/512/1301/1301727.png" width="20px" height="20px"/></button>{" "}
             <button type="button" onClick={()=>{deletelists(index)}}><img src="https://cdn-icons-png.flaticon.com/512/4313/4313306.png" width="20px" height="20px"/></button>
+            <input type="range" id="percent" min="0" max="100" onChange={(e)=>{sliderfunc(e, index)}}/>
           </div>
         );
       })}
-      </div>
+      {endlist.map((value, index)=>{
+        return(
+          <div className='scroll'>
+            <input type="checkbox"/>
+            <span className='list-background'>{value}</span>
+          </div>
+        )
+      })}
     </div></center>
   );
 }

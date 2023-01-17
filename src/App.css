@@ -53,13 +53,14 @@
   font-family: 'East Sea Dokdo';
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input[style="checkbox"] {
+
+}
+input[style="checkbox"]:checked {
+  background-color: aqua !important;
+}
+input[style="checkbox"] {
+  
 }
 
 .btn{
