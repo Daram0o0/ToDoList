@@ -24,6 +24,7 @@ import {useState} from 'react';
 function App() {
   const [list, setList] = useState();
   const [makelist, setMakelist] = useState([]);
+  const [ischeck, setIscheck] = useState(false);
   const [ischecked, setIschecked] = useState(false);
   const [endlist, setEndlist] = useState([]);
 
@@ -51,7 +52,22 @@ function App() {
       let temp2 = temp.splice(index, 1);
       setMakelist(temp);
       setEndlist([...endlist,temp2]);
-      setIschecked(false);
+      // setIscheck(false);
+      console.log(e.target.checked);
+    }
+    else {
+      setIscheck(true);
+      console.log(e.target.checked);
+    }
+  }
+
+  function recheckboxfunc(e, index) {
+    if(e.target.checked == true){
+      let temp = [...endlist];
+      let temp2 = temp.splice(index, 1);
+      setEndlist(temp);
+      setMakelist([...makelist,temp2]);
+      // setIschecked(false);
       console.log(e.target.checked);
     }
     else {
@@ -84,7 +100,7 @@ function App() {
       {makelist.map((value, index)=>{
         return(
           <div className='scroll'>
-            <input type="checkbox" value={ischecked} onClick={(e)=>{checkboxfunc(e, index)}}/>
+            <input type="checkbox" value={ischeck} onClick={(e)=>{checkboxfunc(e, index)}}/>
             <span className='list-background'>{value}</span>{" "}
             <button type="button" onClick={()=>{fixlists(index)}}><img src="https://cdn-icons-png.flaticon.com/512/1301/1301727.png" width="20px" height="20px"/></button>{" "}
             <button type="button" onClick={()=>{deletelists(index)}}><img src="https://cdn-icons-png.flaticon.com/512/4313/4313306.png" width="20px" height="20px"/></button>
@@ -96,7 +112,7 @@ function App() {
       {endlist.map((value, index)=>{
         return(
           <div className='scroll'>
-            <input type="checkbox"/>
+            <input type="checkbox" value={ischecked} onClick={(e)=>{recheckboxfunc(e, index)}}/>
             <span className='list-background'>{value}</span>
           </div>
         )
