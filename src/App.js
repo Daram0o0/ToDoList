@@ -10,8 +10,12 @@
 //     - 알아서잘
 //         - 날짜별 관리라든가
 //         - 태그시스템
+//         - 스크롤
+//         - 현재날짜 우측 상단(?)
+//         - 
 // 요구조건 :
 //     - Git 허브 사용하기 하루 3~5커밋 해보도록 노력할것!
+
 
 import logo from './logo.svg';
 import './App.css';
@@ -50,27 +54,29 @@ function App() {
   }
 
   return (
-    <div className='background'>
+    <center><div className='background'>
       <div>
         <h1 className='font-background'>Things to do</h1>
       </div>
       <hr/>
-      <div>
+      <div className='input-background'>
         <input className='input' value={list} placeholder="할 일을 입력하세요" onChange={(e)=>{setList(e.target.value)}}/>
         <button className='btn' onClick={()=>{makelists()}}>+</button>
       </div>
       <hr/>
+      <div >
       {makelist.map((value, index)=>{
         return(
-          <div>
+          <div className='scroll'>
             <input type="checkbox" onClick={(e)=>{checkboxfunc(e, index)}}/>
             <span className='list-background'>{value}</span>
-            <button onClick={()=>{fixlists(index)}}>수정</button>
-            <button onClick={()=>{deletelists(index)}}>-</button>
+            <button type="button" onClick={()=>{fixlists(index)}}><img src="https://cdn-icons-png.flaticon.com/512/1301/1301727.png" width="20px" height="20px"/></button>
+            <button type="button" onClick={()=>{deletelists(index)}}><img src="https://cdn-icons-png.flaticon.com/512/4313/4313306.png" width="20px" height="20px"/></button>
           </div>
         );
       })}
-    </div>
+      </div>
+    </div></center>
   );
 }
 
