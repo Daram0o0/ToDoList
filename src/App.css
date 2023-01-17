@@ -1,12 +1,12 @@
 .background {
   background-color: rgb(226, 210, 236, 0.5);
-  padding: 5%;
-  margin: 5%;
+  padding: 10px;
+  margin: auto;
   text-align: center;
   font-family: 'East Sea Dokdo';
-  height: 30%;
-  width: 70%;
-  
+  height: 500px;
+  width: 350px;
+  /* justify-content: center; */
 }
 
 .font-background {
@@ -53,7 +53,7 @@
   font-family: 'East Sea Dokdo';
 }
 
-input[style="checkbox"] {
+/* input[style="checkbox"] {
 
 }
 input[style="checkbox"]:checked {
@@ -61,7 +61,7 @@ input[style="checkbox"]:checked {
 }
 input[style="checkbox"] {
   
-}
+} */
 
 .btn{
   background-color: #F5B3FF;

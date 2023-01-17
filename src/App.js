@@ -66,11 +66,12 @@ function App() {
       let temp2 = temp.splice(index, 1);
       setMakelist(temp);
       setEndlist([...endlist,temp2]);
+      // e.target.value=50;
     }
   }
 
   return (
-    <center><div className='background'>
+    <div className='background'>
       <div>
         <h1 className='font-background'>Things to do</h1>
       </div>
@@ -89,8 +90,9 @@ function App() {
             <button type="button" onClick={()=>{deletelists(index)}}><img src="https://cdn-icons-png.flaticon.com/512/4313/4313306.png" width="20px" height="20px"/></button>
             <input type="range" id="percent" min="0" max="100" onChange={(e)=>{sliderfunc(e, index)}}/>
           </div>
-        );
+        )
       })}
+
       {endlist.map((value, index)=>{
         return(
           <div className='scroll'>
@@ -99,7 +101,7 @@ function App() {
           </div>
         )
       })}
-    </div></center>
+    </div>
   );
 }
 
