@@ -6,6 +6,7 @@
   font-family: 'East Sea Dokdo';
   height: 500px;
   width: 350px;
+  overflow: scroll;
   /* justify-content: center; */
 }
 
@@ -20,12 +21,6 @@
   margin: 0;
   text-decoration: underline;
   text-decoration-color: rgba(36, 67, 71, 0.486);
-}
-
-.scroll {
-  background-attachment: scroll;
-  background-image: none;
-  background-repeat: no-repeat;
 }
 
 .list-background {

@@ -16,38 +16,36 @@
 // 요구조건 :
 //     - Git 허브 사용하기 하루 3~5커밋 해보도록 노력할것!
 
-
-import logo from './logo.svg';
 import './App.css';
 import {useState} from 'react';
 
 function App() {
-  const [list, setList] = useState();
-  const [makelist, setMakelist] = useState([]);
-  const [ischeck, setIscheck] = useState(false);
-  const [ischecked, setIschecked] = useState(false);
-  const [endlist, setEndlist] = useState([]);
+  const [list, setList] = useState(); //할 일을 입력받는 state
+  const [makelist, setMakelist] = useState([]); //항목담는 배열
+  const [ischeck, setIscheck] = useState(false); //makelist 체크 상태 변수
+  const [ischecked, setIschecked] = useState(false); //endlist 체크 상태 변수
+  const [endlist, setEndlist] = useState([]); //끝난 일 배열
 
-  function makelists() {
+  function makelists() { //할일 생성 함수
     setMakelist([...makelist, list]);
     setList("");
   }
 
-  function deletelists(index) {
+  function deletelists(index) { //할일 삭제 함수
     let temp = [...makelist];
     temp.splice(index, 1);
     setMakelist(temp);
   }
 
-  function fixlists(index) {
+  function fixlists(index) { //할일 수정 함수
     let temp = [...makelist];
     let temp2 = temp.splice(index, 1);
     setMakelist(temp);
     setList(temp2);
   }
 
-  function checkboxfunc(e, index) {
-    if(e.target.checked == true){
+  function checkboxfunc(e, index) { //체크박스 선택: 할 일 -> 다 한 일 
+    if (e.target.checked){
       let temp = [...makelist];
       let temp2 = temp.splice(index, 1);
       setMakelist(temp);
@@ -61,8 +59,8 @@ function App() {
     }
   }
 
-  function recheckboxfunc(e, index) {
-    if(e.target.checked == true){
+  function recheckboxfunc(e, index) { //체크박스 선택: 다 한 일 -> 할 일 
+    if(e.target.checked){
       let temp = [...endlist];
       let temp2 = temp.splice(index, 1);
       setEndlist(temp);
@@ -76,7 +74,7 @@ function App() {
     }
   }
 
-  function sliderfunc(e,index) {
+  function sliderfunc(e, index) { //슬라이더 함수
     if (e.target.value == 100) {
       let temp = [...makelist];
       let temp2 = temp.splice(index, 1);
@@ -97,9 +95,10 @@ function App() {
         <button className='btn' onClick={()=>{makelists()}}>+</button>
       </div>
       <hr/>
+      <div className='scroll'>
       {makelist.map((value, index)=>{
         return(
-          <div className='scroll'>
+          <div>
             <input type="checkbox" value={ischeck} onClick={(e)=>{checkboxfunc(e, index)}}/>
             <span className='list-background'>{value}</span>{" "}
             <button type="button" onClick={()=>{fixlists(index)}}><img src="https://cdn-icons-png.flaticon.com/512/1301/1301727.png" width="20px" height="20px"/></button>{" "}
@@ -108,6 +107,7 @@ function App() {
           </div>
         )
       })}
+      </div>
 
       {endlist.map((value, index)=>{
         return(
