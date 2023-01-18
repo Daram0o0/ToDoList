@@ -104,7 +104,7 @@ function App() {
             <span className='list-background'>{value}</span>{" "}
             <button type="button" onClick={()=>{fixlists(index)}}><img src="https://cdn-icons-png.flaticon.com/512/1301/1301727.png" width="20px" height="20px"/></button>{" "}
             <button type="button" onClick={()=>{deletelists(index)}}><img src="https://cdn-icons-png.flaticon.com/512/4313/4313306.png" width="20px" height="20px"/></button>
-            <input type="range" id="percent" min="0" max="100" onChange={(e)=>{sliderfunc(e, index)}}/>
+            <div><input type="range" id="percent" min="0" max="100" onChange={(e)=>{sliderfunc(e, index)}}/></div>
           </div>
         )
       })}
