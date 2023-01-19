@@ -21,10 +21,10 @@ import {useState} from 'react';
 
 function App() {
   const [list, setList] = useState(); //할 일을 입력받는 state
-  const [makelist, setMakelist] = useState([]); //항목담는 배열
-  const [ischeck, setIscheck] = useState(false); //makelist 체크 상태 변수
-  const [ischecked, setIschecked] = useState(false); //endlist 체크 상태 변수
+  const [makelist, setMakelist] = useState([]); //입력 항목 담는 배열
   const [endlist, setEndlist] = useState([]); //끝난 일 배열
+  const [ischecked, setIschecked] = useState(true); //끝난 일에 대한 checked 변수
+  const [isranged, setIsranged] = useState();
 
   function makelists() { //할일 생성 함수
     setMakelist([...makelist, list]);
@@ -44,32 +44,34 @@ function App() {
     setList(temp2);
   }
 
+  //input type = 'checkbox'는 target.value 값이 아닌 target.checked 값으로 작동.
   function checkboxfunc(e, index) { //체크박스 선택: 할 일 -> 다 한 일 
     if (e.target.checked){
+      e.target.checked = false;
       let temp = [...makelist];
       let temp2 = temp.splice(index, 1);
       setMakelist(temp);
       setEndlist([...endlist,temp2]);
-      // setIscheck(false);
+      
       console.log(e.target.checked);
     }
     else {
-      setIscheck(true);
+      e.target.checked = true;
       console.log(e.target.checked);
     }
   }
 
   function recheckboxfunc(e, index) { //체크박스 선택: 다 한 일 -> 할 일 
-    if(e.target.checked){
+    if(!e.target.checked){
+      setIschecked(true);
       let temp = [...endlist];
       let temp2 = temp.splice(index, 1);
       setEndlist(temp);
       setMakelist([...makelist,temp2]);
-      // setIschecked(false);
       console.log(e.target.checked);
     }
     else {
-      setIschecked(true);
+      setIschecked(false);
       console.log(e.target.checked);
     }
   }
@@ -80,7 +82,6 @@ function App() {
       let temp2 = temp.splice(index, 1);
       setMakelist(temp);
       setEndlist([...endlist,temp2]);
-      // e.target.value=50;
     }
   }
 
@@ -95,15 +96,15 @@ function App() {
         <button className='btn' onClick={()=>{makelists()}}>+</button>
       </div>
       <hr/>
-      <div className='scroll'>
+      <div>
       {makelist.map((value, index)=>{
         return(
           <div>
-            <input type="checkbox" value={ischeck} onClick={(e)=>{checkboxfunc(e, index)}}/>
+            <input type="checkbox" onClick={(e)=>{checkboxfunc(e, index)}}/>
             <span className='list-background'>{value}</span>{" "}
             <button type="button" onClick={()=>{fixlists(index)}}><img src="https://cdn-icons-png.flaticon.com/512/1301/1301727.png" width="20px" height="20px"/></button>{" "}
             <button type="button" onClick={()=>{deletelists(index)}}><img src="https://cdn-icons-png.flaticon.com/512/4313/4313306.png" width="20px" height="20px"/></button>
-            <div><input type="range" id="percent" min="0" max="100" onChange={(e)=>{sliderfunc(e, index)}}/></div>
+            <div><input type="range" value={isranged} min="0" max="100" onChange={(e)=>{sliderfunc(e, index)}}/></div>
           </div>
         )
       })}
@@ -112,11 +113,12 @@ function App() {
       {endlist.map((value, index)=>{
         return(
           <div className='scroll'>
-            <input type="checkbox" value={ischecked} onClick={(e)=>{recheckboxfunc(e, index)}}/>
+            <input type="checkbox" checked={ischecked} onClick={(e)=>{recheckboxfunc(e, index)}}/>
             <span className='list-background'>{value}</span>
           </div>
         )
       })}
+
     </div>
   );
 }
