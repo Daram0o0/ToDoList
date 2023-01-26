@@ -31,7 +31,7 @@ function App() {
     setList("");
   }
 
-  //중복되는 파트를 함수로 나타내고 싶었지만, 함수의 변수를 받아오지 못 함
+  //중복되는 파트를 함수로 나타내고 싶었지만, 함수의 변수를 받아오지 못 함.
   function deletelists(index) { //할일 삭제 함수
     let temp = [...makelist];
     let temp2 = temp.splice(index, 1);
