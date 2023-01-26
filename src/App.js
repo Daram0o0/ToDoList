@@ -31,9 +31,10 @@ function App() {
     setList("");
   }
 
+  //중복되는 파트를 함수로 나타내고 싶었지만, 함수의 변수를 받아오지 못 함
   function deletelists(index) { //할일 삭제 함수
     let temp = [...makelist];
-    temp.splice(index, 1);
+    let temp2 = temp.splice(index, 1);
     setMakelist(temp);
   }
 
@@ -52,7 +53,6 @@ function App() {
       let temp2 = temp.splice(index, 1);
       setMakelist(temp);
       setEndlist([...endlist,temp2]);
-      
       console.log(e.target.checked);
     }
     else {
@@ -88,7 +88,7 @@ function App() {
   return (
     <div className='background'>
       <div>
-        <h1 className='font-background'>Things to do</h1>
+        <h1 className='font-background'>To Do List</h1>
       </div>
       <hr/>
       <div className='input-background'>
@@ -101,9 +101,9 @@ function App() {
         return(
           <div>
             <input type="checkbox" onClick={(e)=>{checkboxfunc(e, index)}}/>
-            <span className='list-background'>{value}</span>{" "}
-            <button type="button" onClick={()=>{fixlists(index)}}><img src="https://cdn-icons-png.flaticon.com/512/1301/1301727.png" width="20px" height="20px"/></button>{" "}
-            <button type="button" onClick={()=>{deletelists(index)}}><img src="https://cdn-icons-png.flaticon.com/512/4313/4313306.png" width="20px" height="20px"/></button>
+            <span className='list-background'>{value}</span>
+            <button type="button" onClick={()=>{fixlists(index)}}><img className="button" src="https://cdn-icons-png.flaticon.com/512/1301/1301727.png"/></button>{" "}
+            <button type="button" onClick={()=>{deletelists(index)}}><img className="button" src="https://cdn-icons-png.flaticon.com/512/4313/4313306.png"/></button>
             <div><input type="range" value={isranged} min="0" max="100" onChange={(e)=>{sliderfunc(e, index)}}/></div>
           </div>
         )
@@ -112,12 +112,11 @@ function App() {
 
       {endlist.map((value, index)=>{
         return(
-          <div className='scroll'>
+          <div>
             <input type="checkbox" checked={ischecked} onClick={(e)=>{recheckboxfunc(e, index)}}/>
             <span className='list-background'>{value}</span>
           </div>
-        )
-      })}
+      )})}
 
     </div>
   );

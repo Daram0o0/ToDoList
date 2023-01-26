@@ -3,34 +3,30 @@
   padding: 10px;
   margin: auto;
   text-align: center;
-  font-family: 'East Sea Dokdo';
+  font-family: 'Black Han Sans', sans-serif;
   height: 500px;
   width: 350px;
   overflow: scroll;
 }
 
 .font-background {
-  background-color: rgb(161, 126, 184, 0.2);
-  font-size: 50px;
+  background-color: rgba(255, 255, 255, 0.2);
+  font-size: 40px;
   padding: 5px;
   text-align: center;
   display: flex;
   justify-content: center;
-  text-shadow: 3px 3px #2d64a797;
+  text-shadow: 3px 3px #00000079;
   margin: 0;
-  text-decoration: underline;
-  text-decoration-color: rgba(36, 67, 71, 0.486);
 }
 
 .list-background {
   font-size: 25px;
-  margin: 0;
-  background-color: whitesmoke;
-  text-decoration: underline;
-  text-decoration-color: rgba(18, 33, 35, 0.28);
+  font-family: 'Do Hyeon', sans-serif;
+  padding: 7px;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap');
 
 .input-background{
   display: flex;
@@ -44,18 +40,13 @@
   font-size: 20px;
   border-radius: 50px;
   border: 0;
-  font-family: 'East Sea Dokdo';
+  font-family: 'Do Hyeon', sans-serif;
 }
 
-/* input[style="checkbox"] {
-
+.button{
+  width: 20px;
+  height: 20px;
 }
-input[style="checkbox"]:checked {
-  background-color: aqua !important;
-}
-input[style="checkbox"] {
-  
-} */
 
 .btn{
   background-color: #F5B3FF;
@@ -66,12 +57,10 @@ input[style="checkbox"] {
   color: white;
   padding: 15px;
   text-align: center;
-  /* vertical-align: middle; */
-  /* font-size: 16px; */
 }
 .btn:hover{
-  background-color: #f084fe92; 
+  background-color: #a300ee92; 
 }
 .btn:active{
-  background-color: #B693BF; 
+  background-color: #ffffff; 
 }
